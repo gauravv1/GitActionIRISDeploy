@@ -34,9 +34,9 @@ jobs:
       
       - name: CDK Synth
         run: 'cdk synth'
-        working-directory: GitActionIRISDeploy
+        # working-directory: GitActionIRISDeploy
       
       - name: cdk deploy
         run: cdk deploy
-        working-directory: GitActionIRISDeploy
+        # working-directory: GitActionIRISDeploy
         
