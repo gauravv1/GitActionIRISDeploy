@@ -27,6 +27,7 @@ jobs:
   
   Dev-deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
         
       - name: Configure Credentials
@@ -38,10 +39,10 @@ jobs:
       
       - name: cdk deploy
         run: cdk deploy
-        needs: [build]
         
   QA-deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
         
       - name: Configure Credentials
@@ -53,4 +54,4 @@ jobs:
       
       - name: cdk deploy
         run: cdk deploy
-        needs: [build]
+        
