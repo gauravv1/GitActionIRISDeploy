@@ -36,11 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: my-artifact
-      - name: Display structure of downloaded files
-        run: ls -R
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: my-artifact
+      # - name: Display structure of downloaded files
+      #   run: ls -R
         
       # - name: Display stacks
       #   run: cdk list
