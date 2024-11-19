@@ -2,7 +2,7 @@ name: IRIS Deployment
 on: 
   push:
     branches: [ main ]
-    workflow_dispatch:
+  workflow_dispatch:
     
 jobs:
   aws_cdk:
