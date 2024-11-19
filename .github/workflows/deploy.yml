@@ -38,6 +38,7 @@ jobs:
       
       - name: cdk deploy
         run: cdk deploy
+        needs: [build]
         
   QA-deploy:
     runs-on: ubuntu-latest
@@ -52,3 +53,4 @@ jobs:
       
       - name: cdk deploy
         run: cdk deploy
+        needs: [build]
