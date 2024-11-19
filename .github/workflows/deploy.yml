@@ -5,23 +5,13 @@ on:
   workflow_dispatch:
     
 jobs:
-  aws_cdk:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      
-      # - name: cdk diff
-      #   uses: youyo/aws-cdk-github-actions@v2
-      #   with:
-      #     cdk_subcommand: 'diff'
-      #     actions_comment: true
-      - name: Configure Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-2'
+        uses: actions/checkout@v3
+          with:
+            node-version: '20'
       
       - name: install npm
         run: 'sudo apt update -y && sudo apt install nodejs npm -y'
@@ -34,9 +24,31 @@ jobs:
       
       - name: CDK Synth
         run: 'cdk synth'
-        # working-directory: GitActionIRISDeploy
+  
+  dev-deploy:
+    runs-on: ubuntu-latest
+    steps:
+        
+      - name: Configure Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-2'
       
       - name: cdk deploy
         run: cdk deploy
-        # working-directory: GitActionIRISDeploy
         
+  dev-deploy:
+    runs-on: ubuntu-latest
+    steps:
+        
+      - name: Configure Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.QA_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.QA_AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-2'
+      
+      - name: cdk deploy
+        run: cdk deploy
