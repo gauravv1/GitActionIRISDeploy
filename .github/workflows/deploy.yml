@@ -42,6 +42,9 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         
+      # - name: Display stacks
+      #   run: cdk list
+        
       - name: Configure Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -53,7 +56,7 @@ jobs:
         run: 'sudo npm install -g aws-cdk'
       
       - name: cdk deploy
-        run: cdk deploy --all
+        run: cdk deploy --app GitActionIrisDeployStack
         
   QA-deploy:
     runs-on: ubuntu-latest
