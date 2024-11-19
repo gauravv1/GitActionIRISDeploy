@@ -25,7 +25,7 @@ jobs:
       - name: CDK Synth
         run: 'cdk synth'
   
-  dev-deploy:
+  Dev-deploy:
     runs-on: ubuntu-latest
     steps:
         
@@ -39,7 +39,7 @@ jobs:
       - name: cdk deploy
         run: cdk deploy
         
-  dev-deploy:
+  QA-deploy:
     runs-on: ubuntu-latest
     steps:
         
