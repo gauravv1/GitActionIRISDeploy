@@ -92,5 +92,5 @@ jobs:
         run: cdk synth
       
       - name: cdk deploy
-        run: cdk deploy -all
+        run: cdk deploy GitActionIrisDeployStack
         
