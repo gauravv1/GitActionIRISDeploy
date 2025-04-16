@@ -9,91 +9,91 @@ jobs:
     env:
       ENVIRONMENT: dev
     runs-on: ubuntu-latest
-    name: Deploy to ${ENVIRONMENT}
+    name: Deploy to ${{ENVIRONMENT}}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-          # with:
-          #   node-version: '20'
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      #     # with:
+      #     #   node-version: '20'
       
-      - name: install npm
-        run: 'sudo apt update -y && sudo apt install nodejs npm -y'
+      # - name: install npm
+      #   run: 'sudo apt update -y && sudo apt install nodejs npm -y'
       
-      - name: install AWS CDK
-        run: 'sudo npm install -g aws-cdk'
+      # - name: install AWS CDK
+      #   run: 'sudo npm install -g aws-cdk'
       
-      - name: install dependencies
-        run: 'sudo npm install'
+      # - name: install dependencies
+      #   run: 'sudo npm install'
       
-      - name: CDK Synth
-        run: 'cdk synth'
+      # - name: CDK Synth
+      #   run: 'cdk synth'
       
-      - run: mkdir -p cdk.out
+      # - run: mkdir -p cdk.out
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: cdk.out
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: my-artifact
+      #     path: cdk.out
     
-  Dev-deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+  # Dev-deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
       # - uses: actions/download-artifact@v4
       #   with:
       #     name: my-artifact
       # - name: Display structure of downloaded files
       #   run: ls -R
-      - name: Checkout
-        uses: actions/checkout@v2
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
         
-      - name: Configure Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-2'
+  #     - name: Configure Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: 'us-east-2'
       
-      - name: install AWS CDK
-        run: 'sudo npm install -g aws-cdk'
+  #     - name: install AWS CDK
+  #       run: 'sudo npm install -g aws-cdk'
         
-      - name: install dependencies
-        run: 'sudo npm install'
+  #     - name: install dependencies
+  #       run: 'sudo npm install'
       
-      - name: CDK Synth
-        run: cdk synth
+  #     - name: CDK Synth
+  #       run: cdk synth
       
-      - name: cdk deploy
-        run: cdk deploy GitActionIrisDeployStack
+  #     - name: cdk deploy
+  #       run: cdk deploy GitActionIrisDeployStack
         
-  QA-deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      # - uses: actions/download-artifact@v4
-      #   with:
-      #     name: my-artifact
-      # - name: Display structure of downloaded files
-      #   run: ls -R
-      - name: Checkout
-        uses: actions/checkout@v2
+  # QA-deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     # - uses: actions/download-artifact@v4
+  #     #   with:
+  #     #     name: my-artifact
+  #     # - name: Display structure of downloaded files
+  #     #   run: ls -R
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
       
-      - name: Configure Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.QA_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.QA_AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-2'
+  #     - name: Configure Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.QA_AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.QA_AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: 'us-east-2'
       
-      - name: install AWS CDK
-        run: 'sudo npm install -g aws-cdk'
+  #     - name: install AWS CDK
+  #       run: 'sudo npm install -g aws-cdk'
       
-      - name: install dependencies
-        run: 'sudo npm install'
+  #     - name: install dependencies
+  #       run: 'sudo npm install'
       
-      - name: CDK Synth
-        run: cdk synth
+  #     - name: CDK Synth
+  #       run: cdk synth
       
-      - name: cdk deploy
-        run: cdk deploy GitActionIrisDeployStack
+  #     - name: cdk deploy
+  #       run: cdk deploy GitActionIrisDeployStack
         
