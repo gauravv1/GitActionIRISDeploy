@@ -6,7 +6,10 @@ on:
     
 jobs:
   build:
+    env:
+      ENVIRONMENT: dev
     runs-on: ubuntu-latest
+    name: Deploy to ${ENVIRONMENT}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
