@@ -3,11 +3,10 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-    
+env:
+  ENVIRONMENT: dev
 jobs:
   build:
-    env:
-      ENVIRONMENT: dev
     runs-on: ubuntu-latest
     name: Deploy to ${{env.ENVIRONMENT}}
     steps:
