@@ -8,21 +8,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ENVIRONMENT: dev
-    name: Deploy to dev
+      ENVIRONMENT: dev      
     steps:
+      - uses: actions/checkout@v4
+          # with:
+          #   node-version: '20'
       - name: Hello
         id: tfvars
         run: |
-          cd GitActionIRISDeploy/test
+          cd test
           role = $(grep AWS_ROLE_ARN 'terraform.${{env.ENVIRONMENT}}.tfvars')
           echo $role
-          
-      # - name: Checkout
-      #   uses: actions/checkout@v2
-      #     # with:
-      #     #   node-version: '20'
-      
       # - name: install npm
       #   run: 'sudo apt update -y && sudo apt install nodejs npm -y'
       
