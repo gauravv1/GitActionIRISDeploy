@@ -12,8 +12,9 @@ jobs:
     name: Deploy to dev
     steps:
       - name: Hello
+        id: tfvars
         run: |
-          ENV_FILE = 'terraform.${{env.ENVIRONMENT}}.tfvars'
+          echo 'terraform.${{env.ENVIRONMENT}}.tfvars'
           
       # - name: Checkout
       #   uses: actions/checkout@v2
