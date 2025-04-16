@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Hello
         run: |
-          ENV_FILE = "terraform.${{env.ENVIRONMENT}}.tfvars"
+          ENV_FILE = 'terraform.${{env.ENVIRONMENT}}.tfvars'
           echo $ENV_FILE
       # - name: Checkout
       #   uses: actions/checkout@v2
