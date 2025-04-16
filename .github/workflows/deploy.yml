@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT: dev
-    name: Deploy to ${{env.ENVIRONMENT}}
+    name: Deploy to ${{ env.ENVIRONMENT }}
     steps:
       - name: Hello
         run: |
