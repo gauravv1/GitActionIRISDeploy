@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT: dev
-    name: Deploy to ${{ env.ENVIRONMENT }}
+    name: Deploy to dev
     steps:
       - name: Hello
         run: |
-          ENV_FILE = "terraform.ENVIRONMENT.tfvars"
-          echo $ENV_FILE
+          ENV_FILE = "terraform.${{env.ENVIRONMENT}}.tfvars"
+          echo ${{env.ENVIRONMENT}}
       # - name: Checkout
       #   uses: actions/checkout@v2
       #     # with:
