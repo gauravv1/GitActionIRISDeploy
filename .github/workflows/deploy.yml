@@ -14,7 +14,8 @@ jobs:
       - name: Hello
         id: tfvars
         run: |
-          echo 'terraform.${{env.ENVIRONMENT}}.tfvars'
+          role = $(grep AWS_ROLE_ARN 'terraform.${{env.ENVIRONMENT}}.tfvars')
+          echo $role
           
       # - name: Checkout
       #   uses: actions/checkout@v2
