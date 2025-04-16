@@ -17,8 +17,9 @@ jobs:
         id: tfvars
         run: |
           cd test
-          role = $(grep AWS_ROLE_ARN 'terraform.${{env.ENVIRONMENT}}.tfvars')
-          echo $role
+          cat 'terraform.${{env.ENVIRONMENT}}.tfvars'
+      #role = $(grep AWS_ROLE_ARN 'terraform.${{env.ENVIRONMENT}}.tfvars')
+      #echo $role
       # - name: install npm
       #   run: 'sudo apt update -y && sudo apt install nodejs npm -y'
       
